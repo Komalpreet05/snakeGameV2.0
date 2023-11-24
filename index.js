@@ -2,6 +2,8 @@ console.log("Mr. Singh");
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const gulpSound = new Audio("gulp.mp3");
+const backSound = new Audio("snake_music.mp3");
+const gameOverSound = new Audio("gameOver.wav");
 class SnakePart {
     constructor(x, y) {
         this.x = x;
@@ -24,6 +26,7 @@ let xVelocity = 0;
 let yVelocity = 0;
 function drawGame() {
     console.log('draw');
+    backSound.play();
     changeSnakePosition();
     let result = isGameOver();
     if (result) return;
@@ -50,6 +53,8 @@ function isGameOver() {
     }
     //walls
     if (headX < 0 || headX === tileCount || headY < 0 || headY === tileCount) {
+        backSound.pause();
+        gameOverSound.play();
         gameOver = true;
     }
 
@@ -58,6 +63,10 @@ function isGameOver() {
         let part = snakeParts[i];
         if (part.x === headX && part.y === headY) {
             gameOver = true;
+            if (gameOver) {
+                backSound.pause();
+                gameOverSound.play();
+            }
             break;
         }
     }
