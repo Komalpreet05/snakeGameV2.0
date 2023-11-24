@@ -1,7 +1,7 @@
 console.log("Mr. Singh");
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
-
+const gulpSound = new Audio("gulp.mp3");
 class SnakePart {
     constructor(x, y) {
         this.x = x;
@@ -32,6 +32,12 @@ function drawGame() {
 
     checkFoodCollision();
     drawScore();
+    if (score > 4) {
+        speed = 11;
+    }
+    if (score > 10) {
+        speed = 15;
+    }
     drawFood();
     drawSnake();
     setTimeout(drawGame, 1000 / speed);
@@ -114,7 +120,9 @@ function checkFoodCollision() {
     if (foodX === headX && foodY === headY) {
         foodX = Math.floor((Math.random() * tileCount));
         foodY = Math.floor((Math.random() * tileCount));
-        tailLength++; score++;
+        tailLength++;
+        score++;
+        gulpSound.play();
     }
 }
 document.body.addEventListener('keydown', keyDown);
