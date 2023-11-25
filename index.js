@@ -4,6 +4,8 @@ const ctx = canvas.getContext("2d");
 const gulpSound = new Audio("gulp.mp3");
 const backSound = new Audio("snake_music.mp3");
 const gameOverSound = new Audio("gameOver.wav");
+const highScore = document.getElementById("highScore");
+
 class SnakePart {
     constructor(x, y) {
         this.x = x;
@@ -12,14 +14,15 @@ class SnakePart {
 }
 
 let speed = 7;
-let tileCount = 20;
-let headX = 10;
-let headY = 10;
+let tileCount = 23;
+let headX = Math.floor((Math.random() * tileCount));;
+let headY = Math.floor((Math.random() * tileCount));;
 const snakeParts = [];
 let tailLength = 2;
-let foodX = 5;
-let foodY = 5;
+let foodX = Math.floor((Math.random() * tileCount));;
+let foodY = Math.floor((Math.random() * tileCount));;
 let tileSize = canvas.width / tileCount - 2;
+console.log(tileSize);
 //game loop
 let score = 0;
 let xVelocity = 0;
@@ -34,6 +37,9 @@ function drawGame() {
     clearScreen();
 
     checkFoodCollision();
+    let ok = sessionStorage.getItem("high");
+    highScore.textContent = ok;
+    console.log(ok);
     drawScore();
     if (score > 4) {
         speed = 11;
@@ -131,6 +137,7 @@ function checkFoodCollision() {
         foodY = Math.floor((Math.random() * tileCount));
         tailLength++;
         score++;
+        sessionStorage.setItem("high", score);
         gulpSound.play();
     }
 }
