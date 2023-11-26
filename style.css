@@ -1,12 +1,51 @@
-body {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+}
+
+#wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(165 165 165 / 57%);
+}
+.game-head h2 {
+  color: blue;
+  font-size: 30px;
+  padding-top: 10px;
+}
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
+p.scoreCalc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap-x: 20px;
+  gap: 5px;
+}
+.score-board {
+  display: flex;
+}
+img.icon {
+  height: 37px;
+  width: 37px;
+}
 canvas {
   box-shadow: black 20px 10px 50px;
+}
+
+.score-board {
+  display: flex;
+  gap: 10px;
+}
+
+.game-head h2 {
+  text-align: center;
 }

@@ -4,7 +4,15 @@ const ctx = canvas.getContext("2d");
 const gulpSound = new Audio("gulp.mp3");
 const backSound = new Audio("snake_music.mp3");
 const gameOverSound = new Audio("gameOver.wav");
-const highScore = document.getElementById("highScore");
+let highScore = document.getElementById("highScore"); /////
+let currentScore = document.getElementById("currentScore");
+let high = 0;
+
+
+let highScoreC = sessionStorage.getItem("high");
+
+
+console.log("new", highScoreC);
 
 class SnakePart {
     constructor(x, y) {
@@ -24,7 +32,7 @@ let foodY = Math.floor((Math.random() * tileCount));;
 let tileSize = canvas.width / tileCount - 2;
 console.log(tileSize);
 //game loop
-let score = 0;
+let score = 0; ////////
 let xVelocity = 0;
 let yVelocity = 0;
 function drawGame() {
@@ -37,9 +45,7 @@ function drawGame() {
     clearScreen();
 
     checkFoodCollision();
-    let ok = sessionStorage.getItem("high");
-    highScore.textContent = ok;
-    console.log(ok);
+
     drawScore();
     if (score > 4) {
         speed = 11;
@@ -49,6 +55,7 @@ function drawGame() {
     }
     drawFood();
     drawSnake();
+    highScoreSet();
     setTimeout(drawGame, 1000 / speed);
 }
 
@@ -98,9 +105,10 @@ function clearScreen() {
 }
 
 function drawScore() {
-    ctx.fillStyle = 'white';
-    ctx.font = '10px Verdana';
-    ctx.fillText("Score " + score, canvas.width - 50, 10);
+    // ctx.fillStyle = 'white';
+    // ctx.font = '10px Verdana';
+    // ctx.fillText("Score " + score, canvas.width - 50, 10);
+    currentScore.textContent = score;
 }
 
 
@@ -131,15 +139,32 @@ function drawFood() {
     ctx.fillStyle = 'red';
     ctx.fillRect(foodX * tileCount, foodY * tileCount, tileSize, tileSize);
 }
+
+function highScoreSet() {
+    if (!highScoreC && score == 0) {
+        highScore.textContent = high;
+    }
+    else if (score > highScoreC) { highScore.textContent = score; }
+    else {
+        highScore.textContent = highScoreC;
+    }
+
+}
+
 function checkFoodCollision() {
     if (foodX === headX && foodY === headY) {
         foodX = Math.floor((Math.random() * tileCount));
         foodY = Math.floor((Math.random() * tileCount));
         tailLength++;
         score++;
-        sessionStorage.setItem("high", score);
+        let check = score;
+
+        sessionStorage.setItem("high", Math.max(check, highScoreC));
+
         gulpSound.play();
     }
+
+
 }
 document.body.addEventListener('keydown', keyDown);
 
