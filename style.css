@@ -10,12 +10,14 @@
 #wrapper {
   width: 100vw;
   height: 100vh;
-  background: rgb(165 165 165 / 57%);
+  background: #bdceba91;
 }
 .game-head h2 {
   color: blue;
-  font-size: 30px;
+  font-size: 33px;
   padding-top: 10px;
+  text-transform: uppercase;
+  text-align: center;
 }
 .container {
   display: flex;
@@ -39,6 +41,8 @@ img.icon {
 }
 canvas {
   box-shadow: black 20px 10px 50px;
+  padding: 5px;
+  margin-top: 10px;
 }
 
 .score-board {
@@ -46,6 +50,11 @@ canvas {
   gap: 10px;
 }
 
-.game-head h2 {
-  text-align: center;
+span {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.game-body {
+  margin-top: 25px;
 }

@@ -68,6 +68,11 @@ function isGameOver() {
     if (headX < 0 || headX === tileCount || headY < 0 || headY === tileCount) {
         backSound.pause();
         gameOverSound.play();
+        // function gameDone() {
+        //     gameOver = true;
+        // }
+
+        // setTimeout(gameDone, 1000);
         gameOver = true;
     }
 
@@ -84,17 +89,22 @@ function isGameOver() {
         }
     }
 
+    // function gameGone() {
+    //     ctx.fillStyle = 'yellow';
+    //     ctx.fillRect(canvas.width / 3, canvas.height / 3, 200, 200);
+    // }
 
     if (gameOver) {
+        //setTimeout(gameGone, 2000);
         ctx.fillStyle = "white";
-        ctx.font = '50px Verdana';
+        ctx.font = '60px Verdana';
         var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
         gradient.addColorStop("0", " magenta");
         gradient.addColorStop("0.5", "blue");
         gradient.addColorStop("1.0", "red");
         // Fill with gradient
         ctx.fillStyle = gradient;
-        ctx.fillText("GAME OVER!!", canvas.width / 10.5, canvas.height / 2);
+        ctx.fillText("GAME OVER!!", canvas.width / 7.5, canvas.height / 2);
     }
     return gameOver;
 }
@@ -125,7 +135,7 @@ function drawSnake() {
         snakeParts.shift();
     }
 
-    ctx.fillStyle = 'orange';
+    ctx.fillStyle = 'aqua';
     ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
 }
 
