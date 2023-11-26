@@ -21,7 +21,7 @@ class SnakePart {
     }
 }
 
-let speed = 7;
+let speed = 5;
 let tileCount = 23;
 let headX = Math.floor((Math.random() * tileCount));;
 let headY = Math.floor((Math.random() * tileCount));;
@@ -48,10 +48,16 @@ function drawGame() {
 
     drawScore();
     if (score > 4) {
-        speed = 11;
+        speed = 7;
     }
     if (score > 10) {
-        speed = 15;
+        speed = 10;
+    }
+    if (score > 15) {
+        speed = 12
+    }
+    if (score > 20) {
+        speed = 14
     }
     drawFood();
     drawSnake();
@@ -103,6 +109,7 @@ function isGameOver() {
         gradient.addColorStop("0.5", "blue");
         gradient.addColorStop("1.0", "red");
         // Fill with gradient
+
         ctx.fillStyle = gradient;
         ctx.fillText("GAME OVER!!", canvas.width / 7.5, canvas.height / 2);
     }
