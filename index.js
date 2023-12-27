@@ -194,42 +194,42 @@ function checkFoodCollision() {
 document.body.addEventListener('keydown', keyDown);
 
 //buttons controls
-let up1 = document.querySelector(".btn-up");
-let down1 = document.querySelector(".btn-down");
-let left1 = document.querySelector(".btn-left");
-let right1 = document.querySelector(".btn-right");
+// let up1 = document.querySelector(".btn-up");
+// let down1 = document.querySelector(".btn-down");
+// let left1 = document.querySelector(".btn-left");
+// let right1 = document.querySelector(".btn-right");
 
-up1.addEventListener("click", (e) => {
-    console.log("clicked");
-    e.which = 38;
-    if (yVelocity == 1) return;
-    yVelocity = -1;
-    xVelocity = 0;
-})
+// up1.addEventListener("click", (e) => {
+//     console.log("clicked");
+//     e.which = 38;
+//     if (yVelocity == 1) return;
+//     yVelocity = -1;
+//     xVelocity = 0;
+// })
 
-down1.addEventListener("click", (e) => {
-    console.log("clicked");
-    e.which = 40;
-    if (yVelocity == -1) return;
-    yVelocity = 1;
-    xVelocity = 0;
-})
+// down1.addEventListener("click", (e) => {
+//     console.log("clicked");
+//     e.which = 40;
+//     if (yVelocity == -1) return;
+//     yVelocity = 1;
+//     xVelocity = 0;
+// })
 
-left1.addEventListener("click", (e) => {
-    console.log("clicked");
-    e.which = 40;
-    if (xVelocity == 1) return;
-    yVelocity = 0;
-    xVelocity = -1;
-})
+// left1.addEventListener("click", (e) => {
+//     console.log("clicked");
+//     e.which = 40;
+//     if (xVelocity == 1) return;
+//     yVelocity = 0;
+//     xVelocity = -1;
+// })
 
-right1.addEventListener("click", (e) => {
-    console.log("clicked");
-    e.which = 39;
-    yVelocity = 0;
-    if (xVelocity == -1) return;
-    xVelocity = 1;
-})
+// right1.addEventListener("click", (e) => {
+//     console.log("clicked");
+//     e.which = 39;
+//     yVelocity = 0;
+//     if (xVelocity == -1) return;
+//     xVelocity = 1;
+// })
 
 //////////////////////////////////
 function keyDown(e) {
@@ -269,6 +269,7 @@ function keyDown(e) {
 try1.addEventListener("click", () => {
     window.location.reload();
 })
+
 // const createIconHtml = (icon_name) => {
 //     return `<i class="material-icons">${icon_name}</i>`
 // };
