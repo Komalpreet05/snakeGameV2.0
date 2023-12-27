@@ -48,16 +48,19 @@ function drawGame() {
 
     drawScore();
     if (score > 4) {
-        speed = 7;
+        speed = 5;
     }
     if (score > 10) {
-        speed = 10;
+        speed = 7;
     }
     if (score > 15) {
-        speed = 12
+        speed = 9
     }
     if (score > 20) {
-        speed = 14
+        speed = 11
+    }
+    if (score > 25) {
+        speed = 13
     }
     drawFood();
     drawSnake();
@@ -65,6 +68,8 @@ function drawGame() {
     setTimeout(drawGame, 1000 / speed);
 }
 
+
+let try1 = document.querySelector(".try");
 function isGameOver() {
     let gameOver = false;
     if (yVelocity === 0 && xVelocity === 0) {
@@ -111,7 +116,10 @@ function isGameOver() {
         // Fill with gradient
 
         ctx.fillStyle = gradient;
-        ctx.fillText("GAME OVER!!", canvas.width / 7.5, canvas.height / 2);
+        setTimeout(ctx.fillText("GAME OVER!!", canvas.width / 7.5, canvas.height / 2), 1000);
+
+        //head1.classList.add("active");
+        try1.classList.add("active");
     }
     return gameOver;
 }
@@ -142,7 +150,7 @@ function drawSnake() {
         snakeParts.shift();
     }
 
-    ctx.fillStyle = 'aqua';
+    ctx.fillStyle = 'red';
     ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
 }
 
@@ -153,7 +161,7 @@ function changeSnakePosition() {
 }
 
 function drawFood() {
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = 'aqua';
     ctx.fillRect(foodX * tileCount, foodY * tileCount, tileSize, tileSize);
 }
 
@@ -185,6 +193,45 @@ function checkFoodCollision() {
 }
 document.body.addEventListener('keydown', keyDown);
 
+//buttons controls
+let up1 = document.querySelector(".btn-up");
+let down1 = document.querySelector(".btn-down");
+let left1 = document.querySelector(".btn-left");
+let right1 = document.querySelector(".btn-right");
+
+up1.addEventListener("click", (e) => {
+    console.log("clicked");
+    e.which = 38;
+    if (yVelocity == 1) return;
+    yVelocity = -1;
+    xVelocity = 0;
+})
+
+down1.addEventListener("click", (e) => {
+    console.log("clicked");
+    e.which = 40;
+    if (yVelocity == -1) return;
+    yVelocity = 1;
+    xVelocity = 0;
+})
+
+left1.addEventListener("click", (e) => {
+    console.log("clicked");
+    e.which = 40;
+    if (xVelocity == 1) return;
+    yVelocity = 0;
+    xVelocity = -1;
+})
+
+right1.addEventListener("click", (e) => {
+    console.log("clicked");
+    e.which = 39;
+    yVelocity = 0;
+    if (xVelocity == -1) return;
+    xVelocity = 1;
+})
+
+//////////////////////////////////
 function keyDown(e) {
     //up
     if (e.keyCode == 38) {
@@ -192,6 +239,8 @@ function keyDown(e) {
         yVelocity = -1;
         xVelocity = 0;
     }
+
+
 
     //down
     if (e.keyCode == 40) {
@@ -211,7 +260,20 @@ function keyDown(e) {
         yVelocity = 0;
         xVelocity = 1;
     }
+    if (e.keyCode == 32) {
+        yVelocity = 0;
+        xVelocity = 0;
+    }
 }
+
+try1.addEventListener("click", () => {
+    window.location.reload();
+})
+// const createIconHtml = (icon_name) => {
+//     return `<i class="material-icons">${icon_name}</i>`
+// };
+// let pa = document.getElementById("para");
+// pa.innerHTML = createIconHtml("keyboard_return");
 
 drawGame();
 //three ways

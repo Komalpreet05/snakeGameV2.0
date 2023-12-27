@@ -58,3 +58,43 @@ span {
 .game-body {
   margin-top: 25px;
 }
+
+.headGame,
+.try {
+  display: none;
+}
+
+.active {
+  display: flex;
+}
+
+.replay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+button.try {
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 5px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 25px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+button.try:hover {
+  background-color: white;
+  color: black;
+}
+
+.button-pad {
+  position: absolute;
+  top: 20%;
+  left: 10px;
+}

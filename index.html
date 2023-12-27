@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake Game</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    /> -->
   </head>
   <body>
     <div id="wrapper">
@@ -20,6 +28,50 @@
             </p>
           </div>
           <canvas id="game" width="529" height="529"></canvas>
+          <div class="button-pad">
+            <div class="btn-up">
+              <input
+                type="image"
+                src="http://aaronblomberg.com/sites/ez/images/btn-up.png"
+                alt="Up"
+                class="button up-btn"
+              />
+            </div>
+
+            <div class="btn-right">
+              <input
+                type="image"
+                src="http://aaronblomberg.com/sites/ez/images/btn-right.png"
+                alt="Right"
+                class="button right-btn"
+              />
+            </div>
+
+            <div class="btn-down">
+              <input
+                type="image"
+                src="http://aaronblomberg.com/sites/ez/images/btn-down.png"
+                alt="Down"
+                class="button down-btn"
+              />
+            </div>
+
+            <div class="btn-left">
+              <input
+                type="image"
+                src="http://aaronblomberg.com/sites/ez/images/btn-left.png"
+                alt="Left"
+                class="button left-btn"
+              />
+            </div>
+          </div>
+          <div class="replay">
+            <!-- <h2 class="headGame">Game over try again</h2> -->
+
+            <button class="try">
+              Play Again<i class="material-icons">replay</i>
+            </button>
+          </div>
         </div>
         <div class="game-board"></div>
       </div>
